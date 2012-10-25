@@ -1,5 +1,5 @@
 <?
-$destinatario = "gurdusmapachus@hotmail.com";
+$destinatario = $POST_['mail'];
 $asunto = "Practica 17";
 $cuerpo = "
 <html>
@@ -9,7 +9,7 @@ $cuerpo = "
 <body>
 <h1>Confirmacion de registro</h1>
 <h2>Usted se ha registrado con los siguientes datos:</h2>
-Username:\r\n";
+<h2>Username:</h2>\r\n";
 $cuerpo .= $_POST['nick'];
 $cuerpo .= "\r\n";
 $cuerpo .= "Correo:\r\n";
