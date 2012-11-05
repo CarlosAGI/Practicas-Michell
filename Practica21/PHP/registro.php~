@@ -1,0 +1,26 @@
+<?php
+require_once("bd.inc");
+$conexion = new mysqli($host, $user, $pass, $bd);
+
+if($conexion->connect_error){
+	die('Error de COnexion (' . $conexion->connect_errno . $conexion->connect_error);
+}
+
+
+$nickname = $_GET['nick'];
+$mail = $_GET['mail'];
+$contra = $_GET['encriptada'];
+
+
+$nickname = $conexion -> real_escape_string($nickname);
+$mail = $conexion -> real_escape_string($mail);
+$contra = $conexion -> real_escape_string($contra);
+
+$query = "insert into usuarios (nick, correo, pass) values (\"$nickname\", \"$mail\", \"$contra\") ";
+$conexion -> query($query) or die("Error con el query".$conexion->errno." : ".$conexion->error);
+
+$conexion -> close();
+
+header("Location: ../Practica12.html?status=1");
+
+?>
